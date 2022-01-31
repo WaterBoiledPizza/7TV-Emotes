@@ -9,11 +9,11 @@ class TwitchEmotes(Flox):
         if len(query) >= bttv.MIN_QUERY_LEN:
             emotes = bttv.search_emotes(query)
             for emote in emotes:
-                self.items(emote)
+                self.result(emote)
         elif len(query) == 0:
             emotes = bttv.top_emotes()
             for emote in emotes:
-                self.items(emote['emote'])
+                self.result(emote['emote'])
         else:
             self.add_item(
                 title="Invalid search!",
@@ -37,7 +37,7 @@ class TwitchEmotes(Flox):
             parameters=[bttv.get_img_url(data[0], '3x'), data[0]['code']],
         )
 
-    def items(self, item):
+    def result(self, item):
         emote_owner = str(item['user']['name'])
         file_ext = item['imageType']
         self.add_item(
