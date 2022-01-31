@@ -1,5 +1,4 @@
 import webbrowser
-import json
 
 from flox import Flox, utils, clipboard, ICON_BROWSER, ICON_COPY, ICON_APP_ERROR
 import bttv
