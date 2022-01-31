@@ -1,2 +1,2 @@
-flox-lib==0.10.0
+flox-lib==0.10.3
 requests==2.25.0
