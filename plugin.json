@@ -4,7 +4,7 @@
     "Name": "BetterTTV Twitch Emotes",
     "Description": "Search Twitch.tv emotes via BetterTTV",
     "Author": "Garulf",
-    "Version": "0.0.1",
+    "Version": "0.0.2",
     "Language": "python",
     "Website": "https://github.com/Garulf/Betterttv-twitch-emotes",
     "IcoPath": "./icon.png",
