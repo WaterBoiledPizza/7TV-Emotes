@@ -11,7 +11,8 @@ class TwitchEmotes(Flox):
             for emote in emotes:
                 self.result(emote)
         elif len(query) == 0:
-            emotes = bttv.top_emotes()
+            cache = utils.cache(f'{self.name}_top_emotes.json', max_age=300)
+            emotes = cache(bttv.top_emotes)()
             for emote in emotes:
                 self.result(emote['emote'])
         else:
