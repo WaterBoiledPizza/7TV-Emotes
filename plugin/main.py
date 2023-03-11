@@ -1,61 +1,60 @@
 import webbrowser
-
 from flox import Flox, utils, clipboard, ICON_BROWSER, ICON_COPY, ICON_APP_ERROR
-import bttv
+import seventv
 
-class TwitchEmotes(Flox):
+class SevenTVEmotes(Flox):
 
     def query(self, query):
-        if len(query) >= bttv.MIN_QUERY_LEN:
-            emotes = bttv.search_emotes(query)
+        if len(query) >= seventv.MIN_QUERY_LEN:
+            emotes = seventv.search_emotes(query)
             for emote in emotes:
                 self.result(emote)
         elif len(query) == 0:
             cache = utils.cache(f'{self.name}_top_emotes.json', max_age=300)
-            emotes = cache(bttv.top_emotes)()
+            emotes = cache(seventv.trending_emotes)()
             for emote in emotes:
-                self.result(emote['emote'])
+                self.result(emote)
         else:
             self.add_item(
                 title="Invalid search!",
-                subtitle="{} or more characters required.".format(bttv.MIN_QUERY_LEN),
+                subtitle="{} or more characters required.".format(seventv.MIN_QUERY_LEN),
                 icon=ICON_APP_ERROR
             )
 
     def context_menu(self, data):
         self.add_item(
             title="Open in browser",
-            subtitle="Open icon in web browser.",
+            subtitle="Open emote page in web browser.",
             icon=ICON_BROWSER,
             method=self.open_in_browser,
-            parameters=[bttv.get_img_url(data[0], '3x')],
+            parameters=[seventv.get_emote_url(data[0])],
         )
         self.add_item(
             title="Copy to clipboard",
-            subtitle="Copy emote to clipboard.",
+            subtitle="Copy image link to clipboard.",
             icon=ICON_COPY,
             method=self.copy_to_clipboard,
-            parameters=[bttv.get_img_url(data[0], '3x'), data[0]['code']],
+            parameters=[seventv.get_img_url(data[0], '3x'), data[0]['name']],
         )
 
     def result(self, item):
-        emote_owner = str(item['user']['name'])
-        file_ext = item['imageType']
+        emote_owner = str(item['owner']['display_name'])
+        file_ext = "gif" if seventv.isAnimated(item["id"]) else "png"
         self.add_item(
-            title=item['code'],
-            subtitle=f"Streamer: {emote_owner}",
-            icon=utils.get_icon(bttv.get_img_url(item), self.name, file_name=f"{item['id']}.{file_ext}"),
+            title=item['name'],
+            subtitle=f"User: {emote_owner}",
+            icon=utils.get_icon(seventv.get_img_url(item), self.name, file_name=f"{item['id']}.{file_ext}"),
             method=self.copy_to_clipboard,
-            parameters=[bttv.get_img_url(item, '3x'), item['code']],
+            parameters=[seventv.get_img_url(item, '3x'), item['name']],
             context=[item]
         )
 
     def open_in_browser(self, url):
         webbrowser.open(url)
 
-    def copy_to_clipboard(self, url, code):
+    def copy_to_clipboard(self, url, name):
         clipboard.put(url)
-        self.show_msg("Copied to clipboard", f"Emote: {code}", url)
+        self.show_msg("Copied to clipboard", f"Emote: {name}", url)
 
 if __name__ == "__main__":
-    TwitchEmotes()
+    SevenTVEmotes()
