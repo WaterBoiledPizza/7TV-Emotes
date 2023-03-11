@@ -1,5 +1,5 @@
 import webbrowser
-from flox import Flox, utils, clipboard, ICON_BROWSER, ICON_COPY, ICON_APP_ERROR
+from flox import Flox, utils, clipboard
 import seventv
 
 class SevenTVEmotes(Flox):
@@ -18,21 +18,21 @@ class SevenTVEmotes(Flox):
             self.add_item(
                 title="Invalid search!",
                 subtitle="{} or more characters required.".format(seventv.MIN_QUERY_LEN),
-                icon=ICON_APP_ERROR
+                icon="./Images/app_error.png"
             )
 
     def context_menu(self, data):
         self.add_item(
             title="Open in browser",
             subtitle="Open emote page in web browser.",
-            icon=ICON_BROWSER,
+            icon="./Images/Browser.png",
             method=self.open_in_browser,
             parameters=[seventv.get_emote_url(data[0])],
         )
         self.add_item(
             title="Copy to clipboard",
             subtitle="Copy image link to clipboard.",
-            icon=ICON_COPY,
+            icon="./Images/copy.png",
             method=self.copy_to_clipboard,
             parameters=[seventv.get_img_url(data[0], '3x'), data[0]['name']],
         )
