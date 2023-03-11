@@ -8,5 +8,5 @@ Flow Launcher:
 WIP
 ```
 
-# Screenshots:
-WIP
+# Showcase:
+![](https://github.com/WaterBoiledPizza/7TV-Emotes/blob/main/show.gif)
