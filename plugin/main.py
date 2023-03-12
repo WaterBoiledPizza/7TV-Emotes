@@ -6,7 +6,7 @@ import seventv
 class SevenTVEmotes(Flox):
 
     def query(self, query):
-        valid = re.findall("[-_A-Za-z(!?&)$+:0-9]{2,100}", query)
+        valid = re.findall("[-_A-Za-z(!?&)$+:0-9]{1,100}", query)
         query = valid[0] if valid else ""
         if len(query) >= seventv.MIN_QUERY_LEN:
             emotes = seventv.search_emotes(query)

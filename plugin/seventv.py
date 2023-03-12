@@ -4,7 +4,7 @@ GQL_URL = "https://7tv.io/v3/gql"
 REST_URL = "https://7tv.io/v3/emotes/{id}"
 CDN_URL = 'https://cdn.7tv.app/emote/{id}/{size}.{ext}'
 EMOTE_URL = 'https://7tv.app/emotes/{id}'
-MIN_QUERY_LEN = 2
+MIN_QUERY_LEN = 1
 
 
 def get_img_url(emote, size='1x'):
