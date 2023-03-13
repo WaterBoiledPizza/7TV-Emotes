@@ -42,7 +42,7 @@ class SevenTVEmotes(Flox):
 
     def result(self, item):
         emote_owner = str(item['owner']['display_name'])
-        file_ext = "gif" if seventv.isAnimated(item["id"]) else "png"
+        file_ext = "webp"
         self.add_item(
             title=item['name'],
             subtitle=f"User: {emote_owner}",

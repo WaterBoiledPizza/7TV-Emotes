@@ -11,7 +11,7 @@ def get_img_url(emote, size='1x'):
     """
     Return emote image url
     """
-    file_ext = "gif" if isAnimated(emote['id']) else "png"
+    file_ext = "webp"
     return CDN_URL.format(id=emote['id'], ext=file_ext, size=size)
 
 def get_emote_url(emote, size='1x'):
@@ -19,11 +19,6 @@ def get_emote_url(emote, size='1x'):
     Return emote url
     """
     return EMOTE_URL.format(id=emote['id'])
-
-def isAnimated(id):
-    response = requests.get(REST_URL.format(id=id))
-    data = response.json()
-    return data['animated']
 
 def _request(search="", category="TOP", limit=10):
     query = {
