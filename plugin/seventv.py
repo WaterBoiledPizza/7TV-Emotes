@@ -20,7 +20,7 @@ def get_emote_url(emote, size='1x'):
     """
     return EMOTE_URL.format(id=emote['id'])
 
-def _request(search="", category="TOP", limit=10):
+def _request(search="", category="TOP", limit=30):
     query = {
         "operationName": "SearchEmotes",
         "variables": {
