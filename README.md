@@ -1,8 +1,8 @@
-# 7TV-Emotes (STILL WIP)
+# 7TV-Emotes
 Search emotes from 7TV (based on [Garulf's BetterTTV-Twitch-Emotes](https://github.com/Garulf/BetterTTV-Twitch-Emotes))
 
 # Installation:
-Available in Flow Launcher Plugin Store
+Now available in Flow Launcher Plugin Store (v0.0.3)
 
 Flow Launcher:
 ```
