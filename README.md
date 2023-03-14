@@ -5,7 +5,7 @@ Search emotes from 7TV (based on [Garulf's BetterTTV-Twitch-Emotes](https://gith
 
 Flow Launcher:
 ```
-WIP
+pm install 7TV Emotes
 ```
 
 # Showcase:
